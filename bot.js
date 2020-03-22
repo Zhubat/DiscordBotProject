@@ -17,24 +17,35 @@ client.aliases = new Discord.Collection();
 
 client.on('message', async message =>{
     if (!message.content.startsWith(prefix)){
-        if (message.content.includes('nerd') || message.content.includes('Nerd')){
-            message.channel.send("no u")
+        let str = message.content.toLowerCase();
+
+        if (str.includes('nerd')){
+            message.channel.send("no u");
         }
-    };
+        if (str.includes('gn') || str.includes('good night')){
+            message.react('628069621731164181');
+        }
+        if (str.includes('morning')){
+            message.react('533273456804888577')
+        }
+    }
+    else{
+        if (message.author.bot) return;
+
+        if (!message.guild) return;
+        const args = message.content.slice(prefix.length).split(/ +/);
+        const cmd = args.shift().toLowerCase();
     
-    if (message.author.bot) return;
-
-    if (!message.guild) return;
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const cmd = args.shift().toLowerCase();
-
-    if (cmd.length === 0) return;
-
-    let command = client.commands.get(cmd);
-    if (!command) command = client.commands.get(client.aliases.get(cmd));
-
-    if (command)
-        command.run(client, message, args);
+        if (cmd.length === 0) return;
+    
+        let command = client.commands.get(cmd);
+        if (!command) command = client.commands.get(client.aliases.get(cmd));
+    
+        if (command)
+            command.run(client, message, args);
+    }
+    
+    
     
 });
 
