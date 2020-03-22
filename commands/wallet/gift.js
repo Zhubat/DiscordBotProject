@@ -26,7 +26,6 @@ module.exports = {
 
                 if (targetWallet === null) targetWallet = 0;
                 if (selfWallet === null) selfWallet = 0;
-                message.reply(`${amount}`);
 
                 if (amount > selfWallet){
                     return message.channel.send(`**You don't have enough CPs.**\nUsage: +gift <cp amount> <tag user here>`);
