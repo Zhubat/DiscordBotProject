@@ -24,6 +24,9 @@ module.exports = {
 
         if (amount > selfWallet){
             return message.channel.send(`**You don't have enough CPs.**\nUsage: +gift <cp amount> <tag user here>`);
+        }
+        else if (amount <= 0){
+            return message.reply("Cannot have 0 or negative amounts!")
         } 
         else{
             db.add(`userBalance_${targetMember.id}`, amount);
