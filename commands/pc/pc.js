@@ -19,7 +19,7 @@ module.exports = {
             item = item.toLowerCase();
             
             if (item in pc_dict){
-                return message.channel.send(`**${pc_dict[item]}**`)
+                return message.reply(`**${pc_dict[item]}**`)
             }
             else{
                 return message.channel.send(`**wrong format**\n+pc <item name>`);
