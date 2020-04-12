@@ -7,10 +7,10 @@ module.exports = {
     run: async (client, message, args) => {
         var pc_dict = {"choiceband":"110-140k", "choicespecs":"110-140k", "choicescarf":"130-150k",
                         "lifeorb": "100-120k", "assualtvest": "130-150k", "rerollticket":"\nIV: 600-700k\nNature: 350k",
-                        "rarecandy": "6-8k", "focussash": "3k", "toxicorb": "50k", "flameorb": "50k", "cc": "380-410k", 
+                        "rarecandy": "6-8k", "focussash": "3k", "toxicorb": "50k", "flameorb": "50k", "cc": "380-410k (if event is on: 400-420k", 
                         "blackmedalion": "180k", "bms": "180k", "membership": "\n15day: 200k\n30day:380k", "ms": "\n15day: 200k\n30day:380k",
                         "razorclaw": "20k", "shinystone": "15-20k", "razorfang": "20k", "smokeball": "15-20k", "machobrace": "30k", 
-                        "protector": "20-30k", "deepseatooth": "20k", "deepseascale": "20k"}
+                        "protector": "20-30k", "deepseatooth": "20k", "deepseascale": "20k", "dragonfang": "20-30k", "dragonscale": "20-30k"}
         if (!args.length){
             return message.channel.send(`**No item written**\n+pc <item name>`);
         }
