@@ -15,6 +15,8 @@ module.exports = {
                             '+gift <amount> <@user> (Gift some CP!)\n' +
                             //'+games (play some games!)\n' +
                             '+pc <item name> (Price check for items!)\n' +
+                            '+calc (Link to damage calculator for PvP)\n' +
+                            '+smogon <pokemon name> (Smogon link)\n' +
                             '+flip (Flip a table idk...)\n')
             .setThumbnail('https://i.imgur.com/qk7rVZz.jpg')
             .setTimestamp()
