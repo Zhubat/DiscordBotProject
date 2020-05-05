@@ -8,7 +8,7 @@ module.exports = {
     usage: "reset",
     run: async (client, message, args, tools) => {
         if (message.member.roles.cache.some(role => role.name === 'Officer') || message.member.roles.cache.some(role => role.name === 'Guild Leader')){
-            if (!message.mentions.members.first()) return message.channel.send(`**Please mention target!**\nUsage: +award <cp amount> <tag user here>`);
+            if (!message.mentions.members.first()) return message.channel.send(`**Please mention target!**\nUsage: +reset <tag user here>`);
             let targetMember = message.mentions.members.first();
 
             db.set(`userBalance_${targetMember.id}`, 0);

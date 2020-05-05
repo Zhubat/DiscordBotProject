@@ -21,12 +21,13 @@ module.exports = {
                 var isnum = /^\d+$/.test(args[0]);
 
                 if (isnum){
-                
+                    amount = parseInt(args[0]);
                     let targetWallet = await db.fetch(`userBalance_${targetMember.id}`),
                         selfWallet = await db.fetch(`userBalance_${message.author.id}`);
 
                     if (targetWallet === null) targetWallet = 0;
                     if (selfWallet === null) selfWallet = 0;
+
 
                     if (amount <= 0){
                         return message.reply("Cannot have 0 or negative amounts!")

@@ -20,7 +20,7 @@ module.exports = {
                 var isnum = /^\d+$/.test(args[0]);
 
                 if (isnum){
-                
+                    amount = args[0]
                     let targetWallet = await db.fetch(`userBalance_${targetMember.id}`),
                         selfWallet = await db.fetch(`userBalance_${message.author.id}`);
 
