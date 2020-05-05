@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 module.exports = {
     getMember: function(message, toFind = '') {
         toFind = toFind.toLowerCase();
@@ -22,5 +24,19 @@ module.exports = {
 
     formatDate: function(date) {
         return new Intl.DateTimeFormat('en-US').format(date)
-    }
+    },
+
+    jsonReader: function(filePath, cb) {
+        fs.readFile(filePath, (err, fileData) => {
+            if (err) {
+                return cb && cb(err)
+            }
+            try {
+                const object = JSON.parse(fileData)
+                return cb && cb(null, object)
+            } catch(err) {
+                return cb && cb(err)
+            }
+        })
+    },
 }
