@@ -1,3 +1,7 @@
+const fs = require('fs');
+const { jsonReader } = require("../../functions.js");
+const fp = './commands/pc/items.json';
+
 module.exports = {
     name: "pc",
     aliases: ["pc"],
@@ -5,24 +9,38 @@ module.exports = {
     description: "Price check items",
     usage: "pc",
     run: async (client, message, args) => {
-        var pc_dict = {"choiceband":"110-140k", "choicespecs":"110-140k", "choicescarf":"130-150k",
-                        "lifeorb": "100-120k", "assualtvest": "130-150k", "rerollticket":"\nIV: 600-700k\nNature: 350k",
-                        "rarecandy": "6-8k", "focussash": "3k", "toxicorb": "50k", "flameorb": "50k", "cc": "380-410k (if event is on: 400-420k", 
-                        "blackmedalion": "180k", "bms": "180k", "membership": "\n15day: 200k\n30day:380k", "ms": "\n15day: 200k\n30day:380k",
-                        "razorclaw": "20k", "shinystone": "15-20k", "razorfang": "20k", "smokeball": "15-20k", "machobrace": "30k", 
-                        "protector": "20-30k", "deepseatooth": "20k", "deepseascale": "20k", "dragonfang": "20-30k", "dragonscale": "20-30k"}
+        //console.log(itemdata.items);
         if (!args.length){
             return message.channel.send(`**No item written**\n+pc <item name>`);
         }
         else{
+            user_input = args.join(' ');
             item = args.join('');
             item = item.toLowerCase();
             
-            if (item in pc_dict){
-                return message.reply(`**${pc_dict[item]}**`)
+            var id = -1;
+            try {
+                const jsonString = fs.readFileSync(fp)
+                const itemdata = JSON.parse(jsonString)
+                for (var i = 0; i < itemdata.items.length; i++){
+                    if (item === itemdata.items[i].name){
+                        id = i;
+                    }
+                }
+                if (id > 0) pc = itemdata.items[id].price
+                //console.log('in jreader')
+                //console.log(id)
+            } catch(err) {
+            console.log(err)
+            return
+            }
+
+            if (id > 0){
+                //console.log(`**${itemdata.items[id].price}**`);
+                return message.reply(`**${pc}**`);
             }
             else{
-                return message.channel.send(`**wrong format**\n+pc <item name>`);
+                return message.channel.send(`**${user_input} not in database**\n+pc <item name>`);
             }
         }
     }
