@@ -17,7 +17,7 @@ module.exports = {
             user_input = args.join(' ');
             item = args.join('');
             item = item.toLowerCase();
-            
+            //console.log(item)
             var id = -1;
             try {
                 const jsonString = fs.readFileSync(fp)
@@ -27,15 +27,17 @@ module.exports = {
                         id = i;
                     }
                 }
-                if (id > 0) pc = itemdata.items[id].price
                 //console.log('in jreader')
                 //console.log(id)
+		if (id != -1){
+		    var pc = itemdata.items[id].price;
+		}
             } catch(err) {
-            console.log(err)
-            return
+                console.log(err)
+                return
             }
 
-            if (id > 0){
+            if (id != -1){
                 //console.log(`**${itemdata.items[id].price}**`);
                 return message.reply(`**${pc}**`);
             }
