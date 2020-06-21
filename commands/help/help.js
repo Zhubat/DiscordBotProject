@@ -17,7 +17,8 @@ module.exports = {
                             '+pc <item name> (Price check for items!)\n' +
                             '+calc (Link to damage calculator for PvP)\n' +
                             '+smogon <pokemon name> (Smogon link)\n' +
-                            '+flip (Flip a table idk...)\n')
+                            '+flip (Flip a table idk...)\n' +
+                            '+boss20 (best bosses to do based on new boss changes.')
             .setThumbnail('https://i.imgur.com/qk7rVZz.jpg')
             .setTimestamp()
         const msg = await message.channel.send(helpEmbed);
