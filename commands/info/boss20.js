@@ -38,7 +38,7 @@ module.exports = {
                             "24. Misty - Pearl + Good Pokemon \n" +
                             "25. Koichi - Good Pokemon\n")
                             .then(msg => {
-                                msg.delete({ timeout: 180000 })
+                                msg.delete({ timeout: 60000 })
                             })
                             .catch(console.error);
     }
