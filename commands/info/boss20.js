@@ -5,7 +5,12 @@ module.exports = {
     description: "bosslimit",
     usage: "boss20",
     run: async (client, message, args, tools) => {
-        message.channel.send("The 20 Most Viable Bossses:\n\n" +
+        bot_ch = message.member.guild.channels.cache.find(channel => channel.name === "reborn-bot");
+        if (message.guild.channels.cache.id != 489310279524548619){
+            message.channel.send(`Due to the size of the information, please use the command in ${bot_ch}`);
+        }
+        else{
+            message.channel.send("The 20 Most Viable Bossses:\n\n" +
                             "0. Battle Bot - If you have active membership (Not for newer players)\n"+
                             "1. Ash Westbrook - Gives lot of money (Not for newer players)\n" +
                             "(All Dual Bosses give higher money than single bosses)\n" +
@@ -38,8 +43,9 @@ module.exports = {
                             "24. Misty - Pearl + Good Pokemon \n" +
                             "25. Koichi - Good Pokemon\n")
                             .then(msg => {
-                                msg.delete({ timeout: 60000 })
+                                msg.delete({ timeout: 120000 })
                             })
                             .catch(console.error);
+        }
     }
 }
