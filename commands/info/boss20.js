@@ -6,7 +6,7 @@ module.exports = {
     usage: "boss20",
     run: async (client, message, args, tools) => {
         bot_ch = message.member.guild.channels.cache.find(channel => channel.name === "reborn-bot");
-        if (message.guild.channels.cache.id != 489310279524548619){
+        if (message.channel != 489310279524548619){
             message.channel.send(`Due to the size of the information, please use the command in ${bot_ch}`);
         }
         else{
